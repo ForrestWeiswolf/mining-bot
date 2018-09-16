@@ -36,18 +36,21 @@ Bot.prototype.claim = function(nodeId) {
   })
 }
 
-Bot.prototype.release = function(nodeId){
-  if(this.claimedNodes[nodeId]){
+Bot.prototype.release = function(nodeId) {
+  if (this.claimedNodes[nodeId]) {
     release(this.callsign, nodeId)
     delete this.claimedNodes[nodeId]
+  } else {
+    throw new Error(`No claimed node with id ${id}`)
   }
 }
 
-Bot.prototype.mine = function(nodeId){
-  if(this.claimedNodes[nodeId]){
+Bot.prototype.mine = function(nodeId) {
+  if (this.claimedNodes[nodeId]) {
     mine(this.callsign, nodeId)
+  } else {
+    throw new Error(`No claimed node with id ${id}`)
   }
 }
-
 
 module.exports = Bot
