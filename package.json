@@ -9,7 +9,10 @@
   "author": "Forrest Wolf <forrest.weiswolf@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "chai": "^4.1.2",
+    "axios": "^0.18.0",
+    "chai": "^4.1.2"
+  },
+  "devDependencies": {
     "mocha": "^5.2.0"
   }
 }
