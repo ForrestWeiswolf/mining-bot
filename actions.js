@@ -54,4 +54,10 @@ function claim(callsign) {
     })
 }
 
-module.exports = { register, move, scan, claim }
+function release(callsign, nodeId) {
+  return request.post('/release', { callsign, node: nodeId }).catch(err => {
+    console.error(err)
+  })
+}
+
+module.exports = { register, move, scan, claim, release }

@@ -1,4 +1,4 @@
-const { register, move, scan, claim } = require('./actions.js')
+const { register, move, scan, claim, release } = require('./actions.js')
 
 function Bot(callsign) {
   this.callsign = callsign
@@ -11,7 +11,7 @@ Bot.prototype.register = function() {
   })
 }
 
-// moves relative to crrent position - e.g. bot.move(-1, 0) moves the bot
+// moves relative to current position - e.g. bot.move(-1, 0) moves the bot
 // one space in the -X direction
 Bot.prototype.move = function(x, y) {
   return move(this.callsign, this.loc.X + x, this.loc.Y + y).then(loc => {
@@ -29,6 +29,13 @@ Bot.prototype.claim = function() {
       this.claimedNodes[node.Id] = node
     })
   })
+}
+
+Bot.prototype.release = function(nodeId){
+  if(this.claimedNodes[nodeId]){
+    release(this.callsign, nodeId)
+    delete this.claimedNodes[nodeId]
+  }
 }
 
 module.exports = Bot
