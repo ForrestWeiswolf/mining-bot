@@ -10,7 +10,12 @@ Bot.prototype.register = function() {
   })
 }
 
-  register(this.callsign)
+// moves relative to crrent position - e.g. bot.move(-1, 0) moves the bot
+// one space in the -X direction
+Bot.prototype.move = function(x, y) {
+  return move(this.callsign, this.loc.X + x, this.loc.Y + y).then(loc => {
+    this.loc = loc
+  })
 }
 
 module.exports = Bot
