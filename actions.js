@@ -43,9 +43,9 @@ function scan(callsign) {
     })
 }
 
-function claim(callsign) {
+function claim(callsign, nodeId) {
   return request
-    .post('/claim', { callsign })
+    .post('/claim', { callsign, node: nodeId })
     .then(res => {
       return res.data.Nodes
     })

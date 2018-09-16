@@ -7,7 +7,7 @@ radmer.register().then(() => {
   return radmer.scan()
 }).then(nodes => {
   if(nodes){
-    return radmer.claim()
+    return radmer.claim(nodes[0].Id)
   }
 }).then(() => {
   radmer.release(radmer.claimedNodes[0])

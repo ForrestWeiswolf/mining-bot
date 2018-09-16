@@ -20,13 +20,17 @@ Bot.prototype.move = function(x, y) {
 }
 
 Bot.prototype.scan = function() {
-  return scan(this.callsign)
+  return scan(this.callsign).then(nodes => {
+    console.log('scan', nodes)
+    return nodes
+  })
 }
 
-Bot.prototype.claim = function() {
-  return claim(this.callsign).then(nodes => {
+Bot.prototype.claim = function(nodeId) {
+  console.log('claiming...')
+  return claim(this.callsign, nodeId).then(nodes => {
     nodes.forEach(node => {
-      console.log(node)
+      console.log('claim', node)
       this.claimedNodes[node.Id] = node
     })
   })
