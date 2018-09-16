@@ -1,7 +1,8 @@
-const { register, move, scan } = require('./actions.js')
+const { register, move, scan, claim } = require('./actions.js')
 
 function Bot(callsign) {
   this.callsign = callsign
+  this.claimedNodes = {}
 }
 
 Bot.prototype.register = function() {
@@ -20,6 +21,14 @@ Bot.prototype.move = function(x, y) {
 
 Bot.prototype.scan = function() {
   return scan(this.callsign)
+}
+
+Bot.prototype.claim = function() {
+  return claim(this.callsign).then(nodes => {
+    nodes.forEach(node => {
+      this.claimedNodes[node.Id] = node
+    })
+  })
 }
 
 module.exports = Bot

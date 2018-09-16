@@ -43,4 +43,15 @@ function scan(callsign) {
     })
 }
 
-module.exports = { register, move, scan }
+function claim(callsign) {
+  return request
+    .post('/claim', { callsign })
+    .then(res => {
+      return res.data.Nodes
+    })
+    .catch(err => {
+      console.error(err)
+    })
+}
+
+module.exports = { register, move, scan, claim }
