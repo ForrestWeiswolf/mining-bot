@@ -1,3 +1,5 @@
-const { register } = require('./actions.js')
+const { register, move } = require('./actions.js')
 
-register('Radmer')
+register('Radmer').then(loc => {
+  move('Radmer', loc.X, loc.Y + 1)
+})
