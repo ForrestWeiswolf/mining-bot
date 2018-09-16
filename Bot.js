@@ -49,7 +49,7 @@ Bot.prototype.mine = function(nodeId) {
   if (this.claimedNodes[nodeId]) {
     mine(this.callsign, nodeId)
   } else {
-    throw new Error(`No claimed node with id ${id}`)
+    throw new Error(`No claimed node with id ${nodeId}`)
   }
 }
 

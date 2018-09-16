@@ -60,7 +60,7 @@ function release(callsign, nodeId) {
   })
 }
 
-function mine(callsign, node) {
+function mine(callsign, nodeId) {
   return request.post('/mine', { callsign, node: nodeId }).catch(err => {
     console.error(err)
   })
