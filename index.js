@@ -1,5 +1,3 @@
-const { register, move } = require('./actions.js')
+const Bot = require('./Bot.js')
 
-register('Radmer').then(loc => {
-  move('Radmer', loc.X, loc.Y + 1)
-})
+const Radmer = new Bot('Radmer')
