@@ -21,8 +21,11 @@ function move(callsign, x, y) {
   if (typeof x !== 'number' || typeof x !== 'number') {
     throw new TypeError(`Coordinates should be numbers - were ${x}, ${y}`)
   } else {
-    request
+    return request
       .post('/move', { callsign, x: String(x), y: String(y) })
+      .then(res => {
+        return res.data.Status.Location
+      })
       .catch(err => {
         console.error(err)
       })
