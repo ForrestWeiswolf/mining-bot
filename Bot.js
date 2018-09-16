@@ -1,4 +1,4 @@
-const { register, move } = require('./actions.js')
+const { register, move, scan } = require('./actions.js')
 
 function Bot(callsign) {
   this.callsign = callsign
@@ -16,6 +16,10 @@ Bot.prototype.move = function(x, y) {
   return move(this.callsign, this.loc.X + x, this.loc.Y + y).then(loc => {
     this.loc = loc
   })
+}
+
+Bot.prototype.scan = function() {
+  return scan(this.callsign)
 }
 
 module.exports = Bot

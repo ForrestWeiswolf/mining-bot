@@ -32,4 +32,15 @@ function move(callsign, x, y) {
   }
 }
 
-module.exports = { register, move }
+function scan(callsign) {
+  return request
+    .post('/scan', { callsign })
+    .then(res => {
+      return res.data.Nodes
+    })
+    .catch(err => {
+      console.error(err)
+    })
+}
+
+module.exports = { register, move, scan }
