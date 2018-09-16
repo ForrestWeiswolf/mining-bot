@@ -1,4 +1,4 @@
-const { register, move, scan, claim, release } = require('./actions.js')
+const { register, move, scan, claim, release, mine } = require('./actions.js')
 
 function Bot(callsign) {
   this.callsign = callsign
@@ -42,5 +42,12 @@ Bot.prototype.release = function(nodeId){
     delete this.claimedNodes[nodeId]
   }
 }
+
+Bot.prototype.mine = function(nodeId){
+  if(this.claimedNodes[nodeId]){
+    mine(this.callsign, nodeId)
+  }
+}
+
 
 module.exports = Bot

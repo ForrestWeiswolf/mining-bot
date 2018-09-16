@@ -60,4 +60,10 @@ function release(callsign, nodeId) {
   })
 }
 
-module.exports = { register, move, scan, claim, release }
+function mine(callsign, node) {
+  return request.post('/mine', { callsign, node: nodeId }).catch(err => {
+    console.error(err)
+  })
+}
+
+module.exports = { register, move, scan, claim, release, mine }
