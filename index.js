@@ -1,10 +1,4 @@
-const axios = require('axios')
-const process = require('process')
-
-const request = axios.create({
-  baseURL: process.env.SERVER,
-  timeout: 100,
-})
+const request = require('./request.js')
 
 function register(callsign) {
   if (typeof callsign !== 'string') {
