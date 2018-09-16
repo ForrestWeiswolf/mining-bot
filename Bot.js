@@ -26,6 +26,7 @@ Bot.prototype.scan = function() {
 Bot.prototype.claim = function() {
   return claim(this.callsign).then(nodes => {
     nodes.forEach(node => {
+      console.log(node)
       this.claimedNodes[node.Id] = node
     })
   })
