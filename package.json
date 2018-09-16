@@ -1,0 +1,15 @@
+{
+  "name": "mining-bot",
+  "version": "1.0.0",
+  "description": "mining drone algorithm for Headlight Mars Mining Drone Challenge ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Forrest Wolf <forrest.weiswolf@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
