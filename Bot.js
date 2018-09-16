@@ -27,10 +27,8 @@ Bot.prototype.scan = function() {
 }
 
 Bot.prototype.claim = function(nodeId) {
-  console.log('claiming...')
   return claim(this.callsign, nodeId).then(nodes => {
     nodes.forEach(node => {
-      console.log('claim', node)
       this.claimedNodes[node.Id] = node
     })
   })
@@ -41,7 +39,7 @@ Bot.prototype.release = function(nodeId) {
     release(this.callsign, nodeId)
     delete this.claimedNodes[nodeId]
   } else {
-    throw new Error(`No claimed node with id ${id}`)
+    throw new Error(`No claimed node with id ${nodeId}`)
   }
 }
 
